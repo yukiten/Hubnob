@@ -1,0 +1,34 @@
+﻿@page
+@model Hubnob.Pages.GuildList.ManageMembersModel
+
+@{
+    ViewData["Title"] = "Manage Members";
+}
+
+<h1>Manage Members</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model.Guild.GuildMembers)
+        {
+            <tr>
+                <td>@member.User.UserName</td>
+                <td>@member.GuildRole.Name</td>
+                <td>
+                    <a asp-page="./EditRole" asp-route-id="@member.Id">Edit Role</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
